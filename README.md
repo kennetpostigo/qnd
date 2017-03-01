@@ -16,11 +16,12 @@ npm install qnd --save-dev
 
 To get started with `qnd` all you need to do is create a file:
 ```js
+// index.js - this is where we use qnd and pass it our entry source file to our app
 var qnd = require('qnd');
 
 qnd.qnd('./src/index.js')
 ```
-// index.js
+
 Then in your `package.json` add a script to you scripts section:
 ```js
 "scripts": {
