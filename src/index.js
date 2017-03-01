@@ -5,8 +5,9 @@ var watch = require('rollup-watch');
 var serve = require('rollup-plugin-serve');
 var livereload = require('rollup-plugin-livereload');
 var globals = require('rollup-plugin-node-globals');
-var builtIns = require('rollup-plugin-node-builtins');
-var nodeResolve = require('rollup-plugin-node-resolve');
+var builtins = require('rollup-plugin-node-builtins');
+var resolve = require('rollup-plugin-node-resolve');
+var cjs = require('rollup-plugin-commonjs');
 
 function qnd(
   src: string,
@@ -20,11 +21,20 @@ function qnd(
     format: 'iife',
     dest: './dist/' + (outputName || 'bundle.js'),
     plugins: [
-      nodeResolve({
-        module: false
+      cjs({
+        include: [
+          'node_modules/fbjs/**',
+          'node_modules/object-assign/**',
+          'node_modules/react/**',
+          'node_modules/react-dom/**'
+        ]
       }),
       globals(),
-      builtIns(),
+      builtins(),
+      resolve({
+        browser: true,
+        module: false
+      }),
       serve({
         contentBase: 'dist',
         historyApiFallback: true,
