@@ -1,0 +1,32 @@
+{
+  "name": "qnd",
+  "version": "0.0.0",
+  "description": "quick and dirty development builds",
+  "main": "./dist/qnd.min.js",
+  "author": "Kennet Postigo<kennetfpostigo@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build:develop": "cross-env NODE_ENV=development rollup -c ./rollup.config.js",
+    "build:production": "cross-env NODE_ENV=production rollup -c ./rollup.config.js",
+    "build": "yarn run clean && npm run build:develop && yarn run build:production"
+  },
+  "dependencies": {
+    "rollup": "^0.41.4",
+    "rollup-plugin-livereload": "^0.4.0",
+    "rollup-plugin-serve": "^0.1.0",
+    "rollup-watch": "^3.2.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-plugin-syntax-flow": "^6.18.0",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-babili": "^0.0.11",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "cross-env": "^3.1.4",
+    "flow-bin": "^0.40.0",
+    "rimraf": "^2.6.1",
+    "rollup-plugin-babel": "^2.7.1"
+  }
+}

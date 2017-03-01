@@ -1,0 +1,22 @@
+{
+  "presets": [
+    "es2015-rollup"
+  ],
+  "plugins": [
+    "syntax-flow",
+    "transform-flow-strip-types",
+    "transform-object-rest-spread"
+  ],
+  "env": {
+    "development": {
+      "presets": [],
+      "plugins": []
+    },
+    "production": {
+      "presets": [
+        "babili"
+      ],
+      "plugins": []
+    }
+  }
+}

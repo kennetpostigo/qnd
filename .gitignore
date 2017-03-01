@@ -1,0 +1,8 @@
+node_modules
+dist
+flow-typed
+.DS_Store
+.nyc_output
+coverage
+.git
+sample
