@@ -1,6 +1,6 @@
 {
   "name": "qnd",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "quick and dirty development builds",
   "main": "./dist/qnd.min.js",
   "author": "Kennet Postigo<kennetfpostigo@gmail.com>",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "rollup": "^0.41.4",
+    "rollup-plugin-commonjs": "^7.0.0",
     "rollup-plugin-livereload": "^0.4.0",
     "rollup-plugin-node-builtins": "^2.1.0",
     "rollup-plugin-node-globals": "^1.1.0",
