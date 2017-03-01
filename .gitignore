@@ -6,3 +6,4 @@ flow-typed
 coverage
 .git
 sample
+.vscode
