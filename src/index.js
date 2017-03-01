@@ -17,7 +17,7 @@ function qnd(
   return watch(rollup, {
     entry: src,
     sourceMap: sourceMaps,
-    format: 'umd',
+    format: 'iife',
     dest: './dist/' + (outputName || 'bundle.js'),
     plugins: [
       nodeResolve({
