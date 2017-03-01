@@ -8,14 +8,21 @@ var globals = require('rollup-plugin-node-globals');
 var builtIns = require('rollup-plugin-node-builtins');
 var nodeResolve = require('rollup-plugin-node-resolve');
 
-function qnd(src: string, outputName: string, port: number): Function {
+function qnd(
+  src: string,
+  outputName: string,
+  port: number,
+  sourceMaps: boolean = false
+): Function {
   return watch(rollup, {
     entry: src,
-    sourceMap: false,
+    sourceMap: sourceMaps,
     format: 'umd',
     dest: './dist/' + (outputName || 'bundle.js'),
     plugins: [
-      nodeResolve(),
+      nodeResolve({
+        module: false
+      }),
       globals(),
       builtIns(),
       serve({
