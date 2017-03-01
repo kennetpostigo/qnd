@@ -20,21 +20,31 @@ function qnd(
     sourceMap: sourceMaps,
     format: 'iife',
     dest: './dist/' + (outputName || 'bundle.js'),
+    external: ['react', 'react-dom'],
+    globals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    },
     plugins: [
+      resolve({
+        browser: true,
+        main: true
+      }),
       cjs({
-        include: [
-          'node_modules/fbjs/**',
-          'node_modules/object-assign/**',
-          'node_modules/react/**',
-          'node_modules/react-dom/**'
-        ]
+        include: ['node_modules/**'],
+        exclude: ['node_modules/react/**'],
+        extensions: ['.js'],
+        ignoreGlobal: false,
+        sourceMap: sourceMaps,
+        namedExports: {
+          // './node_modules/react/lib/React.js': ['react'],
+          // './node_modules/react/React.js': ['react'],
+          './node_modules/react/lib/React.js': ['React']
+          // './node_modules/react/React.js': ['React']
+        }
       }),
       globals(),
       builtins(),
-      resolve({
-        browser: true,
-        module: false
-      }),
       serve({
         contentBase: 'dist',
         historyApiFallback: true,

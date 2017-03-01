@@ -1,6 +1,6 @@
 {
   "name": "qnd",
-  "version": "0.0.5",
+  "version": "0.0.21",
   "description": "quick and dirty development builds",
   "main": "./dist/qnd.min.js",
   "author": "Kennet Postigo<kennetfpostigo@gmail.com>",
