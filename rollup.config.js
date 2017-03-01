@@ -23,6 +23,9 @@ export default {
       exclude: 'node_modules/**'
     })
   ],
-  external: [],
-  globals: {}
+  external: ['react', 'react-dom'],
+  globals: {
+    react: 'React',
+    'react-dom': 'react-dom'
+  }
 };
