@@ -1,7 +1,7 @@
 # qnd
 > Quick and Dirty development builds for reason
 
-`qnd` provides some additional functionality while developing on the web with reason. Mainly live reload on changes to your code. `qnd` utilizes [rollup](https://github.com/rollup/rollup) under the hood in order to provide this functionality but imposes no knowledge of rollup.
+`qnd` provides some additional functionality while developing on the web with reason. Mainly live reload on changes to your code. `qnd` utilizes [webpack](https://github.com/webpack/webpack) under the hood in order to provide this functionality but imposes no knowledge of webpack.
 
 ### Install
 ```bash
