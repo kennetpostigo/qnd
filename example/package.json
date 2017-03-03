@@ -1,0 +1,12 @@
+{
+  "name": "example",
+  "version": "0.0.0",
+  "description": "qnd example",
+  "main": "index.js",
+  "author": "Kennet Postigo <kennetfpostigo@gmail.com>",
+  "scripts": {
+    "qnd": "node qnd.js"
+  },
+  "dependencies": {},
+  "license": "MIT"
+}

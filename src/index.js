@@ -1,59 +1,72 @@
 // @flow
 
-var rollup = require('rollup');
-var watch = require('rollup-watch');
-var serve = require('rollup-plugin-serve');
-var livereload = require('rollup-plugin-livereload');
-var globals = require('rollup-plugin-node-globals');
-var builtins = require('rollup-plugin-node-builtins');
-var resolve = require('rollup-plugin-node-resolve');
-var cjs = require('rollup-plugin-commonjs');
+import express from 'express';
+import webpack from 'webpack';
+import devMiddleware from 'webpack-dev-middleware';
+import hotMiddleware from 'webpack-hot-middleware';
 
-function qnd(
-  src: string,
-  outputName: string,
-  port: number,
-  sourceMaps: boolean = false
-): Function {
-  return watch(rollup, {
-    entry: src,
-    sourceMap: sourceMaps,
-    format: 'iife',
-    dest: './dist/' + (outputName || 'bundle.js'),
-    external: ['react', 'react-dom'],
-    globals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
+function generateEntry(
+  entries: Array<string[]> = [[]],
+  script: string
+): Object {
+  return entries.reduce(
+    (acc, curr) => {
+      acc[curr[0]] = [curr[1], script];
+      return acc;
     },
-    plugins: [
-      resolve({
-        browser: true,
-        main: true
-      }),
-      cjs({
-        include: ['node_modules/**'],
-        exclude: ['node_modules/react/**'],
-        extensions: ['.js'],
-        ignoreGlobal: false,
-        sourceMap: sourceMaps,
-        namedExports: {
-          // './node_modules/react/lib/React.js': ['react'],
-          // './node_modules/react/React.js': ['react'],
-          './node_modules/react/lib/React.js': ['React']
-          // './node_modules/react/React.js': ['React']
-        }
-      }),
-      globals(),
-      builtins(),
-      serve({
-        contentBase: 'dist',
-        historyApiFallback: true,
-        host: 'localhost',
-        port: port || 8000
-      }),
-      livereload()
-    ]
-  });
+    {}
+  );
 }
 
-exports.qnd = qnd;
+function qnd(
+  sources: Array<string[]>,
+  output: string,
+  port: number,
+  sourceMaps: boolean = false
+): void {
+  var app = express();
+  var hotMiddlewareScript: string = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
+
+  var config = {
+    entry: generateEntry(sources, hotMiddlewareScript),
+    output: {
+      path: output,
+      publicPath: '/dist',
+      filename: '[name].js'
+    },
+    devtool: sourceMaps ? 'source-map' : 'eval',
+    stats: {
+      colors: {
+        green: '\u001b[32m'
+      }
+    },
+    plugins: [
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NamedModulesPlugin(),
+      new webpack.NoEmitOnErrorsPlugin()
+    ]
+  };
+
+  var compiler = webpack(config);
+
+  app.use(
+    devMiddleware(compiler, {
+      noInfo: true,
+      publicPath: '/'
+    })
+  );
+
+  app.use(
+    hotMiddleware(compiler, {
+      log: console.log,
+      path: '/__webpack_hmr',
+      heartbeat: 10 * 1000
+    })
+  );
+
+  app.get('/', (req, res) => res.sendFile(output + '/dist/index.html'));
+
+  app.listen(port || 8000, () => console.log('Listening on %j', port || 8000));
+}
+
+export default qnd;

@@ -1,4 +1,5 @@
 import babel from 'rollup-plugin-babel';
+import builtins from 'rollup-plugin-node-builtins';
 
 var dest = 'dist/qnd.js';
 var destES = 'dist/qnd.es.js';
@@ -16,6 +17,7 @@ export default {
   targets: [{ dest: dest, format: 'umd' }, { dest: destES, format: 'es' }],
   sourceMap,
   plugins: [
+    builtins(),
     babel({
       babelrc: true,
       externalHelpers: false,
@@ -23,9 +25,18 @@ export default {
       exclude: 'node_modules/**'
     })
   ],
-  external: ['react', 'react-dom'],
+  external: [
+    // 'path',
+    'express',
+    'webpack',
+    'webpack-dev-middleware',
+    'webpack-hot-middleware'
+  ],
   globals: {
-    react: 'React',
-    'react-dom': 'react-dom'
+    // path: 'path',
+    express: 'express',
+    webpack: 'webpack',
+    'webpack-dev-middleware': 'devMiddleware',
+    'webpack-hot-middleware': 'hotMiddleware'
   }
 };
