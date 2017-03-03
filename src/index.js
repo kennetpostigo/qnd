@@ -1,5 +1,5 @@
 // @flow
-
+import path from 'path';
 import express from 'express';
 import webpack from 'webpack';
 import devMiddleware from 'webpack-dev-middleware';
@@ -63,8 +63,10 @@ function qnd(
       heartbeat: 10 * 1000
     })
   );
+  app.use(express.static(output));
 
-  app.get('/', (req, res) => res.sendFile(output + '/dist/index.html'));
+  app.get('*', (req, res) =>
+    res.sendFile(path.join(output + '/dist/index.html')));
 
   app.listen(port || 8000, () => console.log('Listening on %j', port || 8000));
 }

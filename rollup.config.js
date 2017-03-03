@@ -26,14 +26,12 @@ export default {
     })
   ],
   external: [
-    // 'path',
     'express',
     'webpack',
     'webpack-dev-middleware',
     'webpack-hot-middleware'
   ],
   globals: {
-    // path: 'path',
     express: 'express',
     webpack: 'webpack',
     'webpack-dev-middleware': 'devMiddleware',
