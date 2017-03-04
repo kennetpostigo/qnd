@@ -1444,9 +1444,9 @@ punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
-qnd@^0.0.22:
-  version "0.0.22"
-  resolved "https://registry.yarnpkg.com/qnd/-/qnd-0.0.22.tgz#b39b163e7460f53d1a7808b1104141e636b3014d"
+qnd@0.0.30:
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/qnd/-/qnd-0.0.30.tgz#4714d364830bb5fba296ddc108302c4fb2a6690b"
   dependencies:
     express "^4.15.0"
     webpack "^2.2.1"

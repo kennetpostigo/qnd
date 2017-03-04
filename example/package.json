@@ -7,8 +7,8 @@
   "scripts": {
     "qnd": "node qnd.js"
   },
+  "license": "MIT",
   "dependencies": {
-    "qnd": "^0.0.22"
-  },
-  "license": "MIT"
+    "qnd": "0.0.30"
+  }
 }
