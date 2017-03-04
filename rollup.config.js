@@ -20,6 +20,7 @@ export default {
     builtins(),
     babel({
       babelrc: true,
+      comments: false,
       externalHelpers: false,
       runtimeHelpers: false,
       exclude: 'node_modules/**'

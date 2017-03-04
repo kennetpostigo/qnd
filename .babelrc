@@ -7,15 +7,18 @@
     "transform-flow-strip-types",
     "transform-object-rest-spread"
   ],
+  "comments": false,
   "env": {
     "development": {
       "presets": [],
-      "plugins": []
+      "comments": false,
+      "plugins": [],
     },
     "production": {
       "presets": [
         "babili"
       ],
+      "comments": false,
       "plugins": []
     }
   }
