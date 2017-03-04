@@ -1,7 +1,7 @@
 # qnd
 > Quick and Dirty development builds for reason
 
-`qnd` provides some additional functionality while developing on the web with reason. Mainly live reload on changes to your code. `qnd` utilizes [webpack](https://github.com/webpack/webpack) under the hood in order to provide this functionality but imposes no knowledge of webpack.
+`qnd` provides some additional functionality while developing on the web with reason. `qnd` includes hot reloading, devserver, runtime error overlay and fancy console errors out of the box. `qnd` utilizes [webpack](https://github.com/webpack/webpack) under the hood in order to provide this functionality but imposes no knowledge of webpack.
 
 ### Install
 ```bash
