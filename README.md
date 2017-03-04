@@ -16,7 +16,7 @@ npm install qnd --save-dev
 
 To get started with `qnd` all you need to do is create a file and pass your app entry and the project `__dirname`. Then it will start a server at port `8000`:
 ```js
-// qmd.js
+// qnd.js
 var qnd = require('qnd');
 
 qnd('./path/to/app.js', __dirname)();
