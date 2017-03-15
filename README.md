@@ -19,7 +19,7 @@ To get started with `qnd` all you need to do is create a file and pass your app 
 // qnd.js
 var qnd = require('qnd');
 
-qnd('development', './path/to/app.js', __dirname)();
+qnd('development', './path/to/app.re', __dirname)();
 ```
 
 In your `index.html` add the following:
@@ -38,7 +38,7 @@ Then in your `package.json` add a script to your npm scripts section:
 If you want to create a production bundle:
 
 ```js
-qnd('production', './path/to/app.js', __dirname)();
+qnd('production', './path/to/app.re', __dirname)();
 ```
 
 If not specified qnd assumes/defaults emits its output into a `dist` folder. qnd also assumes that your `index.html` file is in the `dist` folder. The `index.html` is served when hitting `/`, if your `index.html` is not in dist make sure to specify where it is.
@@ -52,8 +52,8 @@ var qnd = require('qnd');
 qnd(
   'development', 
   {
-    app: './path/to/app.js',
-    app2: './path/to/app.js'
+    app: './path/to/app.re',
+    app2: './path/to/app.re'
   }, 
   __dirname, 
   'ouput', // location you want to place qnd output
