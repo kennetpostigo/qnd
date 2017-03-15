@@ -1,6 +1,6 @@
 {
   "name": "qnd",
-  "version": "0.0.30",
+  "version": "0.1.0",
   "description": "quick and dirty development builds",
   "main": "./dist/qnd.min.js",
   "author": "Kennet Postigo<kennetfpostigo@gmail.com>",
@@ -12,6 +12,7 @@
     "build": "yarn run clean && npm run build:develop && yarn run build:production"
   },
   "dependencies": {
+    "bs-loader": "^1.1.0",
     "express": "^4.15.0",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.1",

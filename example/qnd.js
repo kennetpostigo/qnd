@@ -1,3 +1,3 @@
 var qnd = require('qnd');
 
-qnd('./app.js', __dirname)();
+qnd('development', './src/fib.re', __dirname)();

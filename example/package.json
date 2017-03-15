@@ -8,7 +8,12 @@
     "qnd": "node qnd.js"
   },
   "license": "MIT",
+  "devDependencies": {
+    "bs-loader": "^1.1.0",
+    "bs-platform": "^1.5.2",
+    "reason-js": "0.0.16"
+  },
   "dependencies": {
-    "qnd": "0.0.30"
+    "qnd": "^0.1.0"
   }
 }

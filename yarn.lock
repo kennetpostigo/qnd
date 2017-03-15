@@ -887,6 +887,10 @@ browserify-zlib@^0.1.4:
   dependencies:
     pako "~0.2.0"
 
+bs-loader@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/bs-loader/-/bs-loader-1.1.0.tgz#7219f4ac513a3102ad8d506b8d28873bd106916e"
+
 buffer-es6@^4.9.2:
   version "4.9.3"
   resolved "https://registry.yarnpkg.com/buffer-es6/-/buffer-es6-4.9.3.tgz#f26347b82df76fd37e18bcb5288c4970cfd5c404"

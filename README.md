@@ -19,7 +19,7 @@ To get started with `qnd` all you need to do is create a file and pass your app 
 // qnd.js
 var qnd = require('qnd');
 
-qnd('./path/to/app.js', __dirname)();
+qnd('development', './path/to/app.js', __dirname)();
 ```
 
 In your `index.html` add the following:
@@ -35,6 +35,12 @@ Then in your `package.json` add a script to your npm scripts section:
 }
 ```
 
+If you want to create a production bundle:
+
+```js
+qnd('production', './path/to/app.js', __dirname)();
+```
+
 If not specified qnd assumes/defaults emits its output into a `dist` folder. qnd also assumes that your `index.html` file is in the `dist` folder. The `index.html` is served when hitting `/`, if your `index.html` is not in dist make sure to specify where it is.
 
 #### More examples
@@ -44,6 +50,7 @@ var qnd = require('qnd');
 // If you have multiple entry points pass an object
 // The name of the ouput from qnd will be named after the key
 qnd(
+  'development', 
   {
     app: './path/to/app.js',
     app2: './path/to/app.js'
@@ -59,10 +66,13 @@ The `qnd` function takes your application entry settings. It then returns a func
 takes devserver options. More often then not you will not need to configure settings for the devserver because it has sane defaults.
 
 ```js
-qnd(sources: string, dirname: string, output: string, html: string)(
+qnd(build: 'development' | 'production', sources: string, dirname: string, output: string, html: string)(
   port: number, sourceMaps: boolean
 )
 ```
+
+`build`: whether you want to run qnd in production or development.
+
 `sources`: the entry file(s) to your application source.
 
 `dirname`: root direcroty name of the current application. 
