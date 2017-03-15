@@ -56,7 +56,7 @@ qnd(
     app2: './path/to/app.js'
   }, 
   __dirname, 
-  '/ouput', // location you want to place qnd output
+  'ouput', // location you want to place qnd output
   '/public/index.html' // location of the index.html file being served
   )(8001, true); // change the port number to 8001 and set sourceMaps to be generated
 ```
