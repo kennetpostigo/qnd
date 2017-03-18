@@ -30,12 +30,14 @@ export default {
     'express',
     'webpack',
     'webpack-dev-middleware',
-    'webpack-hot-middleware'
+    'webpack-hot-middleware',
+    'write-file-webpack-plugin'
   ],
   globals: {
     express: 'express',
     webpack: 'webpack',
     'webpack-dev-middleware': 'devMiddleware',
-    'webpack-hot-middleware': 'hotMiddleware'
+    'webpack-hot-middleware': 'hotMiddleware',
+    'write-file-webpack-plugin': 'WriteFilePlugin'
   }
 };

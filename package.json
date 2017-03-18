@@ -9,13 +9,14 @@
     "clean": "rimraf dist",
     "build:develop": "cross-env NODE_ENV=development rollup -c ./rollup.config.js",
     "build:production": "cross-env NODE_ENV=production rollup -c ./rollup.config.js",
-    "build": "yarn run clean && npm run build:develop && yarn run build:production"
+    "build": "npm run clean && npm run build:develop && npm run build:production"
   },
   "dependencies": {
     "bs-loader": "^1.1.0",
     "express": "^4.15.0",
     "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.10.1",
+    "write-file-webpack-plugin": "^4.0.0",
     "webpack-hot-middleware": "^2.17.1"
   },
   "devDependencies": {

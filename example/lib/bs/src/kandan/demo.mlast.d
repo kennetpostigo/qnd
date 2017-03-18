@@ -1,0 +1,1 @@
+src/kandan/demo.cmj : src/kandan/state.cmj

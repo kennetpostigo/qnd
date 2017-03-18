@@ -5,15 +5,18 @@
   "main": "index.js",
   "author": "Kennet Postigo <kennetfpostigo@gmail.com>",
   "scripts": {
-    "qnd": "node qnd.js"
+    "start": "node qnd.js",
+    "clean": "bsb -clean-world && rm src/index.js"
   },
   "license": "MIT",
-  "devDependencies": {
-    "bs-loader": "^1.1.0",
-    "bs-platform": "^1.5.2",
-    "reason-js": "0.0.16"
-  },
   "dependencies": {
+    "react-dom": "^15.4.2",
+    "react": "^15.4.2",
+    "reason-js": "https://github.com/BuckleTypes/reason-js.git",
+    "reason-react": "sgrove/rehydrate.git#tmp"
+  },
+  "devDependencies": {
+    "bs-platform": "^1.5.2",
     "qnd": "^0.1.0"
   }
 }

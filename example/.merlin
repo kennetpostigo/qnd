@@ -4,8 +4,12 @@ FLG -ppx /Users/kennetpostigo/Projects/qnd/example/node_modules/bs-platform/bin/
 S /Users/kennetpostigo/Projects/qnd/example/node_modules/bs-platform/lib/ocaml
 B /Users/kennetpostigo/Projects/qnd/example/node_modules/bs-platform/lib/ocaml
 FLG -nostdlib -no-alias-deps -color always -w -40+6+7+27+32..39+44+45
+S /Users/kennetpostigo/Projects/qnd/example/node_modules/reason-react/lib/ocaml
+B /Users/kennetpostigo/Projects/qnd/example/node_modules/reason-react/lib/ocaml
 S /Users/kennetpostigo/Projects/qnd/example/node_modules/reason-js/lib/ocaml
 B /Users/kennetpostigo/Projects/qnd/example/node_modules/reason-js/lib/ocaml
 S src
 B lib/bs/src
+S src/kandan
+B lib/bs/src/kandan
 ####BSB GENERATED: NO EDIT}

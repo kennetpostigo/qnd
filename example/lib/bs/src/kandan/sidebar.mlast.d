@@ -1,0 +1,1 @@
+src/kandan/sidebar.cmj : src/kandan/utils.cmj src/kandan/state.cmj src/kandan/local_string.cmj
