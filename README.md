@@ -74,7 +74,7 @@ qnd({
 
 `sourceMaps[optional]`: application source maps to original code. Defaults to `false`.
 
-`overlay[optional]`: application source maps to original code. Defaults to `true`.
+`overlay[optional]`: development overlay that propogates errors on screen. Defaults to `true`.
 
 ### License
 MIT
