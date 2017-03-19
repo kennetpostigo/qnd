@@ -1,17 +1,11 @@
-const qnd = require('./../dist/qnd.js');
-const path = require('path');
+const qnd = require('qnd');
 
 qnd({
+  dirname: __dirname,
   entry: {
-    kandan: './src/kandan/root.re'
+    kandan: './src/root.re'
   },
-  output: {
-    path: path.resolve(__dirname, 'resources/public/js'),
-    filename: '[name].js'
-  },
-  assets: path.resolve(__dirname, 'resources/public'),
-  html: path.resolve(__dirname, 'resources/public/index.html'),
-  mode: 'development',
-  overlay: false,
-  port: 8000
+  output: 'resources/public/js',
+  assets: 'resources/public',
+  html: 'resources/public/index.html'
 });

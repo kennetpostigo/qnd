@@ -12,11 +12,6 @@
     "reason-js"
   ],
   "sources": [
-    {
-      "dir": "src",
-      "subdirs": [
-        "kandan"
-      ]
-    }
+    "src"
   ]
 }
