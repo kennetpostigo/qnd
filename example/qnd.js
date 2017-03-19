@@ -11,6 +11,7 @@ qnd({
   },
   assets: path.resolve(__dirname, 'resources/public'),
   html: path.resolve(__dirname, 'resources/public/index.html'),
-  mode: 'production',
+  mode: 'development',
+  overlay: false,
   port: 8000
 });

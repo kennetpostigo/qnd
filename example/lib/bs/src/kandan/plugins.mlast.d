@@ -1,1 +1,0 @@
-src/kandan/plugins.cmj : src/kandan/state.cmj src/kandan/local_string.cmj src/kandan/emojis.cmj

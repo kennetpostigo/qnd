@@ -1,1 +1,0 @@
-src/kandan/kandan.cmj : src/kandan/utils.cmj src/kandan/state.cmj src/kandan/sidebar.cmj src/kandan/navbar.cmj src/kandan/main_area.cmj src/kandan/local_string.cmj src/kandan/key_queue.cmj src/kandan/demo.cmj src/kandan/audio_player.cmj
