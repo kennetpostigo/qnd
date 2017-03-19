@@ -13,13 +13,15 @@ type output = {
 };
 
 type config = {
+  dirname: string,
   entry: string | Object,
   output: output,
   assets: string,
   html: string,
   mode: 'production' | 'development',
   port: number,
-  sourcemaps: boolean
+  sourcemaps: boolean,
+  overlay: boolean
 };
 
 function generateEntry(entries: Object, script: string, build: string) {
@@ -33,19 +35,27 @@ function generateEntry(entries: Object, script: string, build: string) {
 }
 
 function qnd(config: config) {
-  var app = express();
-  var hmrs = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
-    entry = null;
+  config.mode = config.mode || 'development';
+
+  var app = express(),
+    hmrs = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
+    entry = null,
+    filename = null;
+
   if (typeof config.entry === 'string') {
     entry = [hmrs, config.entry];
-    var filename = 'bundle.js';
+    filename = 'bundle.js';
   } else {
     entry = generateEntry(config.entry, hmrs, config.mode);
+    filename = '[name].js';
   }
 
   var wpc = {
-    entry: entry,
-    output: config.output,
+    entry,
+    output: {
+      path: path.resolve(config.dirname, config.output),
+      filename
+    },
     module: {
       rules: [{ test: /.(re|ml)$/, use: 'bs-loader' }]
     },
@@ -57,7 +67,9 @@ function qnd(config: config) {
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
-      new WriteFilePlugin()
+      new WriteFilePlugin({
+        log: false
+      })
     ].concat(
       config.mode === 'production'
         ? [
@@ -78,8 +90,6 @@ function qnd(config: config) {
     )
   };
 
-  console.log(wpc);
-
   var compiler = webpack(wpc);
 
   app.use(
@@ -93,16 +103,18 @@ function qnd(config: config) {
   app.use(
     hotMiddleware(compiler, {
       log: console.log,
-      overlay: true,
+      overlay: config.overlay || true,
       path: '/__webpack_hmr',
       heartbeat: 10 * 1000
     })
   );
-  app.use(express.static(config.assets));
+  app.use(express.static(path.resolve(config.dirname, config.assets)));
 
-  app.get('*', (req, res) => res.sendFile(config.html));
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(config.dirname, config.html)));
 
-  app.listen(config.port, () => console.log('Listening on %j', config.port));
+  app.listen(config.port || 8000, () =>
+    console.log('Listening on %j', config.port || 8000));
 }
 
 export default qnd;

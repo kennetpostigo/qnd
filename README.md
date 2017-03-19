@@ -17,73 +17,64 @@ npm install qnd --save-dev
 To get started with `qnd` all you need to do is create a file and pass your app entry and the project `__dirname`. Then it will start a server at port `8000`:
 ```js
 // qnd.js
-var qnd = require('qnd');
+const qnd = require('qnd');
 
-qnd('development', './path/to/app.re', __dirname)();
+qnd({
+  dirname: __dirname,
+  entry: {
+    myApp: './path/to/app/root.re'
+  },
+  output: 'path/to/output',
+  assets: 'path/to/assets',
+  html: 'path/to/html/index.html'
+});
 ```
 
 In your `index.html` add the following:
 ```html
-<script src="bundle.js"></script>
+<script src="myApp.js"></script>
 ```
 
 Then in your `package.json` add a script to your npm scripts section:
 ```js
 "scripts": {
   ...
-  "qnd": "node qnd.js"
+  "start": "node qnd.js"
 }
 ```
 
-If you want to create a production bundle:
+### Options
+The `qnd` function takes your application entry settings as a config object.
 
 ```js
-qnd('production', './path/to/app.re', __dirname)();
+qnd({
+  dirname: __dirname,
+  entry: string | Object,
+  output: string,
+  assets: string,
+  html: string,
+  mode?: 'production' | 'development',,
+  sourcemaps?: boolean,
+  overlay?: boolean
+});
 ```
-
-If not specified qnd assumes/defaults emits its output into a `dist` folder. qnd also assumes that your `index.html` file is in the `dist` folder. The `index.html` is served when hitting `/`, if your `index.html` is not in dist make sure to specify where it is.
-
-#### More examples
-
-```js
-var qnd = require('qnd');
-// If you have multiple entry points pass an object
-// The name of the ouput from qnd will be named after the key
-qnd(
-  'development', 
-  {
-    app: './path/to/app.re',
-    app2: './path/to/app.re'
-  }, 
-  __dirname, 
-  'ouput', // location you want to place qnd output
-  '/public/index.html' // location of the index.html file being served
-  )(8001, true); // change the port number to 8001 and set sourceMaps to be generated
-```
-
-### API
-The `qnd` function takes your application entry settings. It then returns a function which 
-takes devserver options. More often then not you will not need to configure settings for the devserver because it has sane defaults.
-
-```js
-qnd(build: 'development' | 'production', sources: string, dirname: string, output: string, html: string)(
-  port: number, sourceMaps: boolean
-)
-```
-
-`build`: whether you want to run qnd in production or development.
-
-`sources`: the entry file(s) to your application source.
-
 `dirname`: root direcroty name of the current application. 
 
-`output[optional]`: the location you want to place the output from `qnd`. Defaults to `/dist`.
+`entry`: the entry file(s) to your application source.
 
-`html[optional]`: the location of your `index.html`. Defaults to `/dist/index.html`.
+`output`: the location you want to place the output from `qnd`.
+
+`assets`: the location of your assets.
+
+`html`: the location of your `index.html`.
+
+`mode`: whether you want to run qnd in production or development.
 
 `port[optional]`: the port you want the development server to run on. Defaults to `8000`. Example value: `3000`.
 
 `sourceMaps[optional]`: application source maps to original code. Defaults to `false`.
+
+`overlay[optional]`: application source maps to original code. Defaults to `true`.
 
 ### License
 MIT

@@ -15,3 +15,5 @@ license.md
 README.md
 sample
 .vscode
+lib
+example/lib/
